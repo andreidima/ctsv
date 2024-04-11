@@ -184,7 +184,11 @@
                                                 </div>
                                             </th>
                                             @break
-                                        @case ("r. L > 11 000")
+
+                                        {{-- Vechea denumire --}}
+                                        {{-- @case ("r. L > 11 000") --}}
+                                        {{-- Noua denumire --}}
+                                        @case ("k. Leucocitoza")
 
                                             {{-- Acestea se bagă tot la punctul „p. Inform. postdonare” --}}
 

@@ -128,9 +128,9 @@
                                         </div>
                                     </th>
                                     <th colspan="3" style="width: 60px; padding:0px">Rebut procesare</th>
-                                    <th colspan="7" style="width: 140px;">Rebut control laborator</th>
+                                    <th colspan="8" style="width: 140px;">Rebut control laborator</th>
                                     <th colspan="5" style="width: 100px;">Rebut stoc</th>
-                                    <th style="width: 20px;"></th>
+                                    {{-- <th style="width: 20px;"></th> --}}
                                     <th rowspan="2" class="rotate" style="height: 20px">
                                         <div>
                                             Total rebut
@@ -185,10 +185,10 @@
                                                             </div>
                                                         </th>
                                                         @break
-                                                    @case ("L > 11 000")
+                                                    @case ("k. Leucocitoza")
                                                         <th class='rotate' style="height: 80px">
                                                             <div>
-                                                                L > 11 000
+                                                                k. Leucocitoza
                                                             </div>
                                                         </th>
                                                         @break
