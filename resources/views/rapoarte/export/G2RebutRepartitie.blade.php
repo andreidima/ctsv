@@ -128,8 +128,8 @@
                             </div>
                         </th>
                         <th colspan="3" style="width: 60px; padding:0px">Rebut procesare</th>
-                        <th colspan="7" style="width: 140px;">Rebut control laborator</th>
-                        <th colspan="5" style="width: 100px;">Rebut stoc</th>
+                        <th colspan="8" style="width: 140px;">Rebut control biologic</th>
+                        <th colspan="7" style="width: 100px;">Rebut stoc</th>
                         <th rowspan="2" class="rotate" style="height: 20px">
                             <div>
                                 Total rebut
@@ -142,10 +142,10 @@
                                         @case ("a. Rebut recoltare")
                                             {{-- Rebut recoltare se afiseaza deja odata mai sus, pe 2 randuri --}}
                                             @break
-                                        @case ("b. Pungă neconformă")
+                                        @case ("b. Pungă ST neconformă")
                                             <th class='rotate' style="height: 80px">
                                                 <div>
-                                                    b. Pungă <br> neconformă
+                                                    b. Pungă ST<br> neconformă
                                                 </div>
                                             </th>
                                             @break
@@ -184,11 +184,39 @@
                                                 </div>
                                             </th>
                                             @break
+                                        @case ("o. Stocare inadecvată")
+                                            <th class='rotate' style="height: 80px">
+                                                <div>
+                                                    o. Stocare <br> inadecvată
+                                                </div>
+                                            </th>
+                                            @break
+                                        @case ("p. Unit. spartă, aspect neconf.")
+                                            <th class='rotate' style="height: 80px">
+                                                <div>
+                                                    p. Unit. spartă,<br>aspect neconf.
+                                                </div>
+                                            </th>
+                                            @break
+                                        @case ("s. Transport necorespunzator")
+                                            <th class='rotate' style="height: 80px">
+                                                <div>
+                                                    s. Transport<br>necorespunzator
+                                                </div>
+                                            </th>
+                                            @break
+                                        @case ("t. Inform. postdonare")
+                                            <th class='rotate' style="height: 80px">
+                                                <div>
+                                                    t. Inform.<br>postdonare
+                                                </div>
+                                            </th>
+                                            @break
 
                                         {{-- Vechea denumire --}}
                                         {{-- @case ("r. L > 11 000") --}}
                                         {{-- Noua denumire --}}
-                                        @case ("k. Leucocitoza")
+                                        {{-- @case ("k. Leucocitoza") --}}
 
                                             {{-- Acestea se bagă tot la punctul „p. Inform. postdonare” --}}
 
@@ -197,7 +225,7 @@
                                                     r. L > 11 000
                                                 </div>
                                             </th> --}}
-                                            @break
+                                            {{-- @break --}}
                                         @default
                                             <th class='rotate' style="height: 100px">
                                                 <div>
@@ -211,76 +239,85 @@
 
 
                 {{-- Rebut id 16 si 17 se pun la un loc --}}
+                {{-- It's not the case anymore. It shoould be deleted all abouts id 16 and 17 at 01.06.2024 --}}
+                {{-- Delete all the comented code from above and below --}}
 
                 <tbody>
                     <tr>
                         <td style="">
                             1. Unit. eritrocitare (indiferent de tip)
                         </td>
-                        @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut)
+                        {{-- @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut) --}}
+                        @foreach ($rebuturi as $rebut)
                                 <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['CER', 'CER-SL', 'CER-DL', 'REBUT'])->where('recoltari_sange_rebut_id', $rebut->id)->count() }}</td>
                         @endforeach
-                        <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['CER', 'CER-SL', 'CER-DL', 'REBUT'])->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td>
+                        {{-- <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['CER', 'CER-SL', 'CER-DL', 'REBUT'])->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td> --}}
                         <td style="text-align:center">{{ $recoltariSange->whereIn('produs.nume', ['CER', 'CER-SL', 'CER-DL', 'REBUT'])->count() }}</td>
                     </tr>
                     <tr>
                         <td style="">
                             2. Unit. trombocitare (CT)
                         </td>
-                        @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut)
+                        {{-- @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut) --}}
+                        @foreach ($rebuturi as $rebut)
                             <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['CTS'])->where('recoltari_sange_rebut_id', $rebut->id)->count() }}</td>
                         @endforeach
-                        <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['CTS'])->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td>
+                        {{-- <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['CTS'])->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td> --}}
                         <td style="text-align:center">{{ $recoltariSange->whereIn('produs.nume', ['CTS'])->count() }}</td>
                     </tr>
                     <tr>
                         <td style="">
                             3. Unit. Plasma
                         </td>
-                        @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut)
+                        {{-- @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut) --}}
+                        @foreach ($rebuturi as $rebut)
                             <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['PPC'])->where('recoltari_sange_rebut_id', $rebut->id)->count() }}</td>
                         @endforeach
-                        <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['PPC'])->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td>
+                        {{-- <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['PPC'])->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td> --}}
                         <td style="text-align:center">{{ $recoltariSange->whereIn('produs.nume', ['PPC'])->count() }}</td>
                     </tr>
                     <tr>
                         <td style="">
                             4. Unit. PPC-DV-COVID
                         </td>
-                        @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut)
+                        {{-- @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut) --}}
+                        @foreach ($rebuturi as $rebut)
                             <td style="text-align: center;">0</td>
                         @endforeach
-                        <td style="text-align: center;">0</td>
+                        {{-- <td style="text-align: center;">0</td> --}}
                         <td style="text-align:center">0</td>
                     </tr>
                     <tr>
                         <td style="">
                             5. Unit. CRIO
                         </td>
-                        @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut)
+                        {{-- @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut) --}}
+                        @foreach ($rebuturi as $rebut)
                             <td style="text-align: center;">0</td>
                         @endforeach
-                        <td style="text-align: center;">0</td>
+                        {{-- <td style="text-align: center;">0</td> --}}
                         <td style="text-align:center">0</td>
                     </tr>
                     <tr>
                         <td style="">
                             6. Unit. afereză CUT-DL
                         </td>
-                        @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut)
+                        {{-- @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut) --}}
+                        @foreach ($rebuturi as $rebut)
                             <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['CUT'])->where('recoltari_sange_rebut_id', $rebut->id)->count() }}</td>
                         @endforeach
-                        <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['CUT'])->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td>
+                        {{-- <td style="text-align: center;">{{ $recoltariSange->whereIn('produs.nume', ['CUT'])->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td> --}}
                         <td style="text-align:center">{{ $recoltariSange->whereIn('produs.nume', ['CUT'])->count() }}</td>
                     </tr>
                     <tr>
                         <td style="">
                             7. Unit. PPC-A-DV-COVID
                         </td>
-                        @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut)
+                        {{-- @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut) --}}
+                        @foreach ($rebuturi as $rebut)
                             <td style="text-align: center;">0</td>
                         @endforeach
-                        <td style="text-align: center;">0</td>
+                        {{-- <td style="text-align: center;">0</td> --}}
                         <td style="text-align:center">0</td>
                     </tr>
 
@@ -290,10 +327,11 @@
                         <td>
                             {{ $recoltariSangeGrupateDupaProdus->first()->produs->nume ?? '' }}
                         </td>
-                        @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut)
+                        {{-- @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut) --}}
+                        @foreach ($rebuturi as $rebut)
                             <td style="text-align:center">{{ $recoltariSangeGrupateDupaProdus->where('recoltari_sange_rebut_id', $rebut->id)->count() }}</td>
                         @endforeach
-                        <td style="text-align: center;">{{ $recoltariSangeGrupateDupaProdus->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td>
+                        {{-- <td style="text-align: center;">{{ $recoltariSangeGrupateDupaProdus->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td> --}}
                         <td style="text-align:center"><b>{{ $recoltariSangeGrupateDupaProdus->count() }}</b></td>
                     </tr>
                     @endforeach
@@ -301,10 +339,11 @@
                         <td style="text-align:center">
                             <b>Total</b>
                         </td>
-                        @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut)
+                        {{-- @foreach ($rebuturi->whereNotIn('id', [16,17]) as $rebut) --}}
+                        @foreach ($rebuturi as $rebut)
                             <td style="text-align: center;">{{ $recoltariSange->where('recoltari_sange_rebut_id', $rebut->id)->count() }}</td>
                         @endforeach
-                        <td style="text-align: center;">{{ $recoltariSange->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td>
+                        {{-- <td style="text-align: center;">{{ $recoltariSange->whereIn('recoltari_sange_rebut_id', [16,17])->count() }}</td> --}}
                         <td style="text-align: center;">
                             <b>{{ $recoltariSange->count() }}</b>
                         </td>

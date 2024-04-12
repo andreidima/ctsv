@@ -209,7 +209,7 @@ class RecoltareSangeController extends Controller
     {
         $request->session()->get('recoltareSangeRebutReturnUrl') ?? $request->session()->put('recoltareSangeRebutReturnUrl', url()->previous());
 
-        $recoltariSangeRebuturi = RecoltareSangeRebut::get();
+        $recoltariSangeRebuturi = RecoltareSangeRebut::orderBy('nume')->get();
 
         return view('recoltariSange.rebuturi.formularModificare', compact('recoltareSange', 'recoltariSangeRebuturi'));
     }

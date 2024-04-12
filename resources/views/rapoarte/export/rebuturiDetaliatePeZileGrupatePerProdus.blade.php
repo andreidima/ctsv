@@ -128,8 +128,8 @@
                                         </div>
                                     </th>
                                     <th colspan="3" style="width: 60px; padding:0px">Rebut procesare</th>
-                                    <th colspan="8" style="width: 140px;">Rebut control laborator</th>
-                                    <th colspan="5" style="width: 100px;">Rebut stoc</th>
+                                    <th colspan="8" style="width: 140px;">Rebut control biologic</th>
+                                    <th colspan="7" style="width: 100px;">Rebut stoc</th>
                                     {{-- <th style="width: 20px;"></th> --}}
                                     <th rowspan="2" class="rotate" style="height: 20px">
                                         <div>
@@ -143,10 +143,10 @@
                                                     @case ("a. Rebut recoltare")
                                                         {{-- Rebut recoltare se afiseaza deja odata mai sus, pe 2 randuri --}}
                                                         @break
-                                                    @case ("b. Pungă neconformă")
+                                                    @case ("b. Pungă ST neconformă")
                                                         <th class='rotate' style="height: 80px">
                                                             <div>
-                                                                b. Pungă <br> neconformă
+                                                                b. Pungă ST<br> neconformă
                                                             </div>
                                                         </th>
                                                         @break
@@ -185,10 +185,31 @@
                                                             </div>
                                                         </th>
                                                         @break
-                                                    @case ("k. Leucocitoza")
+                                                    @case ("o. Stocare inadecvată")
                                                         <th class='rotate' style="height: 80px">
                                                             <div>
-                                                                k. Leucocitoza
+                                                                o. Stocare <br> inadecvată
+                                                            </div>
+                                                        </th>
+                                                        @break
+                                                    @case ("p. Unit. spartă, aspect neconf.")
+                                                        <th class='rotate' style="height: 80px">
+                                                            <div>
+                                                                p. Unit. spartă,<br>aspect neconf.
+                                                            </div>
+                                                        </th>
+                                                        @break
+                                                    @case ("s. Transport necorespunzator")
+                                                        <th class='rotate' style="height: 80px">
+                                                            <div>
+                                                                s. Transport<br>necorespunzator
+                                                            </div>
+                                                        </th>
+                                                        @break
+                                                    @case ("t. Inform. postdonare")
+                                                        <th class='rotate' style="height: 80px">
+                                                            <div>
+                                                                t. Inform.<br>postdonare
                                                             </div>
                                                         </th>
                                                         @break
