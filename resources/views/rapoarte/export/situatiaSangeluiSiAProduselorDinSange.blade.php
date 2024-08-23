@@ -1,3 +1,7 @@
+@php
+    use \Carbon\Carbon;
+@endphp
+
 <!DOCTYPE  html>
 <html lang="ro">
 
@@ -94,244 +98,6 @@
             </table>
 
             <br>
-
-            {{-- <table>
-                <thead>
-                    <tr>
-                        <th rowspan="2"></th>
-                        <th colspan="2" style="text-align: center">CE</th>
-                        <th colspan="2" style="text-align: center">PPC</th>
-                        <th colspan="2" style="text-align: center">CT</th>
-                        <th colspan="2" style="text-align: center">CRIO</th>
-                        <th colspan="2" style="text-align: center">CER-SL</th>
-                        <th colspan="2" style="text-align: center">CER-DL</th>
-                        <th colspan="2" style="text-align: center">CUT</th>
-                        <td style="border-width: 0px;"></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center">NR.P</td>
-                        <td style="text-align: center">ML</td>
-                        <td style="text-align: center">NR.P</td>
-                        <td style="text-align: center">ML</td>
-                        <td style="text-align: center">NR.P</td>
-                        <td style="text-align: center">ML</td>
-                        <td style="text-align: center">NR.P</td>
-                        <td style="text-align: center">ML</td>
-                        <td style="text-align: center">NR.P</td>
-                        <td style="text-align: center">ML</td>
-                        <td style="text-align: center">NR.P</td>
-                        <td style="text-align: center">ML</td>
-                        <td style="text-align: center">NR.P</td>
-                        <td style="text-align: center">ML</td>
-                        <td style="border-width: 0px;"></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>STOC INIȚIAL</th>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInitiale->whereIn('produs.nume', ['CER'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CER'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInitiale->whereIn('produs.nume', ['PPC'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInitiale->whereIn('produs.nume', ['PPC'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInitiale->whereIn('produs.nume', ['CTS'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CTS'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInitiale->whereIn('produs.nume', ['CRIO'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CRIO'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInitiale->whereIn('produs.nume', ['CER-SL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInitiale->whereIn('produs.nume', ['CER-DL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInitiale->whereIn('produs.nume', ['CUT'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CUT'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="border-width: 0px;"></td>
-                    </tr>
-                    <tr>
-                        <th>RECOLTARE</th>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CER'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CER'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['PPC'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['PPC'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CTS'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CTS'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CRIO'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CRIO'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CER-SL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CER-DL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CUT'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNull('intrare_id')->whereIn('produs.nume', ['CUT'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="border-width: 0px;"></td>
-                    </tr>
-                    <tr>
-                        <th>PRIMITE</th>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CER'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CER'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['PPC'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['PPC'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CTS'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CTS'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CRIO'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CRIO'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CER-SL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CER-DL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CUT'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CUT'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="border-width: 0px;"></td>
-                    </tr>
-                    <tr>
-                        <th>REBUT</th>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeRebutate->whereIn('produs.nume', ['CER'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CER'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeRebutate->whereIn('produs.nume', ['PPC'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeRebutate->whereIn('produs.nume', ['PPC'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeRebutate->whereIn('produs.nume', ['CTS'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CTS'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeRebutate->whereIn('produs.nume', ['CRIO'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CRIO'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeRebutate->whereIn('produs.nume', ['CER-SL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeRebutate->whereIn('produs.nume', ['CER-DL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeRebutate->whereIn('produs.nume', ['CUT'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CUT'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="border-width: 0px;"></td>
-                    </tr>
-                    <tr>
-                        <th>LIVRARE</th>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeLivrate->whereIn('produs.nume', ['CER'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CER'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeLivrate->whereIn('produs.nume', ['PPC'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeLivrate->whereIn('produs.nume', ['PPC'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeLivrate->whereIn('produs.nume', ['CTS'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CTS'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeLivrate->whereIn('produs.nume', ['CRIO'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CRIO'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeLivrate->whereIn('produs.nume', ['CER-SL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeLivrate->whereIn('produs.nume', ['CER-DL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeLivrate->whereIn('produs.nume', ['CUT'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CUT'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="border-width: 0px;"></td>
-                    </tr>
-                    <tr>
-                        <th>STOC FINAL</th>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeStocFinal->whereIn('produs.nume', ['CER'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CER'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeStocFinal->whereIn('produs.nume', ['PPC'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['PPC'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeStocFinal->whereIn('produs.nume', ['CTS'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CTS'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeStocFinal->whereIn('produs.nume', ['CRIO'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CRIO'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeStocFinal->whereIn('produs.nume', ['CER-SL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeStocFinal->whereIn('produs.nume', ['CER-DL'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = $recoltariSangeStocFinal->whereIn('produs.nume', ['CUT'])->count()) === 0 ? '' : $val }}</td>
-                        <td style="text-align:right">{{ ($val = number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CUT'])->sum('cantitate') / 1000, 2)) === "0.00" ? '' : $val }}</td>
-                        <td style="border-width: 0px;"></td>
-                    </tr>
-                    <tr>
-                        <td style="border-width: 0px;">&nbsp;</td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                        <td style="border-width: 0px;"></td>
-                    </tr>
-                    <tr>
-                        <th style="border-width: 0px;"></th>
-                        <th colspan="2" style="text-align: center">VAL</th>
-                        <th colspan="2" style="text-align: center">VAL</th>
-                        <th colspan="2" style="text-align: center">VAL</th>
-                        <th colspan="2" style="text-align: center">VAL</th>
-                        <th colspan="2" style="text-align: center">VAL</th>
-                        <th colspan="2" style="text-align: center">VAL</th>
-                        <th colspan="2" style="text-align: center">VAL</th>
-                        <tH>VALOARE</tH>
-                    </tr>
-                    <tr>
-                        <th>STOC INIȚIAL</th>
-                        <td colspan="2" style="text-align:right">{{ ($val1 = str_replace(',', '', number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CER'])->sum('cantitate') * ($produse->whereIn('nume', ['CER'])->first()->pret ?? 0)))) === "0" ? '' : $val1 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val2 = str_replace(',', '', number_format($recoltariSangeInitiale->whereIn('produs.nume', ['PPC'])->sum('cantitate') * ($produse->whereIn('nume', ['PPC'])->first()->pret ?? 0)))) === "0" ? '' : $val2 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val3 = str_replace(',', '', number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CTS'])->sum('cantitate') * ($produse->whereIn('nume', ['CTS'])->first()->pret ?? 0)))) === "0" ? '' : $val3 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val4 = str_replace(',', '', number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CRIO'])->sum('cantitate') * ($produse->whereIn('nume', ['CRIO'])->first()->pret ?? 0)))) === "0" ? '' : $val4 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val5 = str_replace(',', '', number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-SL'])->first()->pret ?? 0)))) === "0" ? '' : $val5 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val6 = str_replace(',', '', number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-DL'])->first()->pret ?? 0)))) === "0" ? '' : $val6 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val7 = str_replace(',', '', number_format($recoltariSangeInitiale->whereIn('produs.nume', ['CUT'])->sum('cantitate') * ($produse->whereIn('nume', ['CUT'])->first()->pret ?? 0)))) === "0" ? '' : $val7 }}</td>
-                        <td style="text-align:right">{{ $val1 + $val2 + $val3 + $val4 + $val5 + $val6 + $val7 }}</td>
-                    </tr>
-                    <tr>
-                        <th>RECOLTARE</th>
-                        <td colspan="2" style="text-align:right">{{ ($val1 = str_replace(',', '', number_format($recoltariSangeInterval->whereIn('produs.nume', ['CER'])->sum('cantitate') * ($produse->whereIn('nume', ['CER'])->first()->pret ?? 0)))) === "0" ? '' : $val1 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val2 = str_replace(',', '', number_format($recoltariSangeInterval->whereIn('produs.nume', ['PPC'])->sum('cantitate') * ($produse->whereIn('nume', ['PPC'])->first()->pret ?? 0)))) === "0" ? '' : $val2 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val3 = str_replace(',', '', number_format($recoltariSangeInterval->whereIn('produs.nume', ['CTS'])->sum('cantitate') * ($produse->whereIn('nume', ['CTS'])->first()->pret ?? 0)))) === "0" ? '' : $val3 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val4 = str_replace(',', '', number_format($recoltariSangeInterval->whereIn('produs.nume', ['CRIO'])->sum('cantitate') * ($produse->whereIn('nume', ['CRIO'])->first()->pret ?? 0)))) === "0" ? '' : $val4 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val5 = str_replace(',', '', number_format($recoltariSangeInterval->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-SL'])->first()->pret ?? 0)))) === "0" ? '' : $val5 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val6 = str_replace(',', '', number_format($recoltariSangeInterval->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-DL'])->first()->pret ?? 0)))) === "0" ? '' : $val6 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val7 = str_replace(',', '', number_format($recoltariSangeInterval->whereIn('produs.nume', ['CUT'])->sum('cantitate') * ($produse->whereIn('nume', ['CUT'])->first()->pret ?? 0)))) === "0" ? '' : $val7 }}</td>
-                        <td style="text-align:right">{{ $val1 + $val2 + $val3 + $val4 + $val5 + $val6 + $val7 }}</td>
-                    </tr>
-                    <tr>
-                        <th>PRIMITE</th>
-                        <td colspan="2" style="text-align:right">{{ ($val1 = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CER'])->sum('cantitate') * ($produse->whereIn('nume', ['CER'])->first()->pret ?? 0)))) === "0" ? '' : $val1 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val2 = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['PPC'])->sum('cantitate') * ($produse->whereIn('nume', ['PPC'])->first()->pret ?? 0)))) === "0" ? '' : $val2 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val3 = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CTS'])->sum('cantitate') * ($produse->whereIn('nume', ['CTS'])->first()->pret ?? 0)))) === "0" ? '' : $val3 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val4 = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CRIO'])->sum('cantitate') * ($produse->whereIn('nume', ['CRIO'])->first()->pret ?? 0)))) === "0" ? '' : $val4 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val5 = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-SL'])->first()->pret ?? 0)))) === "0" ? '' : $val5 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val6 = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-DL'])->first()->pret ?? 0)))) === "0" ? '' : $val6 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val7 = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->whereIn('produs.nume', ['CUT'])->sum('cantitate') * ($produse->whereIn('nume', ['CUT'])->first()->pret ?? 0)))) === "0" ? '' : $val7 }}</td>
-                        <td style="text-align:right">{{ $val1 + $val2 + $val3 + $val4 + $val5 + $val6 + $val7 }}</td>
-                    </tr>
-                    <tr>
-                        <th>REBUT</th>
-                        <td colspan="2" style="text-align:right">{{ ($val1 = str_replace(',', '', number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CER'])->sum('cantitate') * ($produse->whereIn('nume', ['CER'])->first()->pret ?? 0)))) === "0" ? '' : $val1 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val2 = str_replace(',', '', number_format($recoltariSangeRebutate->whereIn('produs.nume', ['PPC'])->sum('cantitate') * ($produse->whereIn('nume', ['PPC'])->first()->pret ?? 0)))) === "0" ? '' : $val2 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val3 = str_replace(',', '', number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CTS'])->sum('cantitate') * ($produse->whereIn('nume', ['CTS'])->first()->pret ?? 0)))) === "0" ? '' : $val3 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val4 = str_replace(',', '', number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CRIO'])->sum('cantitate') * ($produse->whereIn('nume', ['CRIO'])->first()->pret ?? 0)))) === "0" ? '' : $val4 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val5 = str_replace(',', '', number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-SL'])->first()->pret ?? 0)))) === "0" ? '' : $val5 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val6 = str_replace(',', '', number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-DL'])->first()->pret ?? 0)))) === "0" ? '' : $val6 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val7 = str_replace(',', '', number_format($recoltariSangeRebutate->whereIn('produs.nume', ['CUT'])->sum('cantitate') * ($produse->whereIn('nume', ['CUT'])->first()->pret ?? 0)))) === "0" ? '' : $val7 }}</td>
-                        <td style="text-align:right">{{ $val1 + $val2 + $val3 + $val4 + $val5 + $val6 + $val7 }}</td>
-                    </tr>
-                    <tr>
-                        <th>LIVRARE</th>
-                        <td colspan="2" style="text-align:right">{{ ($val1 = str_replace(',', '', number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CER'])->sum('cantitate') * ($produse->whereIn('nume', ['CER'])->first()->pret ?? 0)))) === "0" ? '' : $val1 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val2 = str_replace(',', '', number_format($recoltariSangeLivrate->whereIn('produs.nume', ['PPC'])->sum('cantitate') * ($produse->whereIn('nume', ['PPC'])->first()->pret ?? 0)))) === "0" ? '' : $val2 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val3 = str_replace(',', '', number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CTS'])->sum('cantitate') * ($produse->whereIn('nume', ['CTS'])->first()->pret ?? 0)))) === "0" ? '' : $val3 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val4 = str_replace(',', '', number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CRIO'])->sum('cantitate') * ($produse->whereIn('nume', ['CRIO'])->first()->pret ?? 0)))) === "0" ? '' : $val4 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val5 = str_replace(',', '', number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-SL'])->first()->pret ?? 0)))) === "0" ? '' : $val5 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val6 = str_replace(',', '', number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-DL'])->first()->pret ?? 0)))) === "0" ? '' : $val6 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val7 = str_replace(',', '', number_format($recoltariSangeLivrate->whereIn('produs.nume', ['CUT'])->sum('cantitate') * ($produse->whereIn('nume', ['CUT'])->first()->pret ?? 0)))) === "0" ? '' : $val7 }}</td>
-                        <td style="text-align:right">{{ $val1 + $val2 + $val3 + $val4 + $val5 + $val6 + $val7 }}</td>
-                    </tr>
-                    <tr>
-                        <th>STOC FINAL</th>
-                        <td colspan="2" style="text-align:right">{{ ($val1 = str_replace(',', '', number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CER'])->sum('cantitate') * ($produse->whereIn('nume', ['CER'])->first()->pret ?? 0)))) === "0" ? '' : $val1 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val2 = str_replace(',', '', number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['PPC'])->sum('cantitate') * ($produse->whereIn('nume', ['PPC'])->first()->pret ?? 0)))) === "0" ? '' : $val2 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val3 = str_replace(',', '', number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CTS'])->sum('cantitate') * ($produse->whereIn('nume', ['CTS'])->first()->pret ?? 0)))) === "0" ? '' : $val3 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val4 = str_replace(',', '', number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CRIO'])->sum('cantitate') * ($produse->whereIn('nume', ['CRIO'])->first()->pret ?? 0)))) === "0" ? '' : $val4 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val5 = str_replace(',', '', number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CER-SL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-SL'])->first()->pret ?? 0)))) === "0" ? '' : $val5 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val6 = str_replace(',', '', number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CER-DL'])->sum('cantitate') * ($produse->whereIn('nume', ['CER-DL'])->first()->pret ?? 0)))) === "0" ? '' : $val6 }}</td>
-                        <td colspan="2" style="text-align:right">{{ ($val7 = str_replace(',', '', number_format($recoltariSangeStocFinal->whereIn('produs.nume', ['CUT'])->sum('cantitate') * ($produse->whereIn('nume', ['CUT'])->first()->pret ?? 0)))) === "0" ? '' : $val7 }}</td>
-                        <td style="text-align:right">{{ $val1 + $val2 + $val3 + $val4 + $val5 + $val6 + $val7 }}</td>
-                    </tr>
-                </tbody>
-            </table> --}}
 
             <table>
                 <thead>
@@ -447,10 +213,25 @@
                         @endphp
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
-                                {{ ($val = str_replace(',', '', number_format($recoltariSangeInitiale->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                {{-- When it was just 1 price --}}
+                                {{-- {{ ($val = str_replace(',', '', number_format($recoltariSangeInitiale->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                @php
+                                    $total += $val;
+                                @endphp --}}
+
+                                {{-- When was added the posibility to calculate multiple prices --}}
+                                @php
+                                    $val = 0;
+                                @endphp
+                                @foreach ($produs->preturi as $pret)
+                                    @php
+                                        $val += $recoltariSangeInitiale->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() * ($pret->pret ?? 0)
+                                    @endphp
+                                @endforeach
                                 @php
                                     $total += $val;
                                 @endphp
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -462,10 +243,30 @@
                         @endphp
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
+                                {{-- When it was just 1 price --}}
+                                {{-- {{ $recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->count() }} - {{ $produs->pret }} -
                                 {{ ($val = str_replace(',', '', number_format($recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
                                 @php
                                     $total += $val;
+                                @endphp --}}
+
+                                {{-- When was added the posibility to calculate multiple prices --}}
+                                @php
+                                    $val = 0;
                                 @endphp
+                                @foreach ($produs->preturi as $pret)
+                                    @php
+                                        $val += $recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() * ($pret->pret ?? 0)
+                                    @endphp
+                                    {{-- {{ $recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() }} - {{ $pret->pret }} - {{ $val }} --}}
+                                    {{-- <br><br> --}}
+                                    {{-- {{ $recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() }} - {{ $pret->pret }} -
+                                    {{ ($val = str_replace(',', '', number_format($recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() * ($pret->pret ?? 0), 2))) === "0.00" ? '' : $val }} --}}
+                                @endforeach
+                                @php
+                                    $total += $val;
+                                @endphp
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -477,10 +278,25 @@
                         @endphp
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
-                                {{ ($val = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                {{-- When it was just 1 price --}}
+                                {{-- {{ ($val = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                @php
+                                    $total += $val;
+                                @endphp --}}
+
+                                {{-- When was added the posibility to calculate multiple prices --}}
+                                @php
+                                    $val = 0;
+                                @endphp
+                                @foreach ($produs->preturi as $pret)
+                                    @php
+                                        $val += $recoltariSangeInterval->whereNotNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() * ($pret->pret ?? 0)
+                                    @endphp
+                                @endforeach
                                 @php
                                     $total += $val;
                                 @endphp
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -492,10 +308,25 @@
                         @endphp
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
-                                {{ ($val = str_replace(',', '', number_format($recoltariSangeRebutate->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                {{-- When it was just 1 price --}}
+                                {{-- {{ ($val = str_replace(',', '', number_format($recoltariSangeRebutate->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                @php
+                                    $total += $val;
+                                @endphp --}}
+
+                                {{-- When was added the posibility to calculate multiple prices --}}
+                                @php
+                                    $val = 0;
+                                @endphp
+                                @foreach ($produs->preturi as $pret)
+                                    @php
+                                        $val += $recoltariSangeRebutate->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() * ($pret->pret ?? 0)
+                                    @endphp
+                                @endforeach
                                 @php
                                     $total += $val;
                                 @endphp
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -507,10 +338,25 @@
                         @endphp
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
-                                {{ ($val = str_replace(',', '', number_format($recoltariSangeLivrate->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                {{-- When it was just 1 price --}}
+                                {{-- {{ ($val = str_replace(',', '', number_format($recoltariSangeLivrate->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                @php
+                                    $total += $val;
+                                @endphp --}}
+
+                                {{-- When was added the posibility to calculate multiple prices --}}
+                                @php
+                                    $val = 0;
+                                @endphp
+                                @foreach ($produs->preturi as $pret)
+                                    @php
+                                        $val += $recoltariSangeLivrate->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() * ($pret->pret ?? 0)
+                                    @endphp
+                                @endforeach
                                 @php
                                     $total += $val;
                                 @endphp
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -522,10 +368,25 @@
                         @endphp
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
-                                {{ ($val = str_replace(',', '', number_format($recoltariSangeStocFinal->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                {{-- When it was just 1 price --}}
+                                {{-- {{ ($val = str_replace(',', '', number_format($recoltariSangeStocFinal->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                @php
+                                    $total += $val;
+                                @endphp --}}
+
+                                {{-- When was added the posibility to calculate multiple prices --}}
+                                @php
+                                    $val = 0;
+                                @endphp
+                                @foreach ($produs->preturi as $pret)
+                                    @php
+                                        $val += $recoltariSangeStocFinal->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() * ($pret->pret ?? 0)
+                                    @endphp
+                                @endforeach
                                 @php
                                     $total += $val;
                                 @endphp
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -533,22 +394,54 @@
                 </tbody>
             </table>
 
+            <br>
+
             <table>
                 <tr>
-                    <td style="border-width: 0px;">
-                        <table style="width: 300px;">
-                            @foreach ($produse as $produs)
-                                @if ($produs->pret !== '0.00')
+                    @foreach ($produsePreturi->whereIn('produs_id', $produse->pluck('id')->toArray())->groupBy('de_la') as $produsePreturiPerData)
+                        <td style="width:250px">
+                            <table style="">
                                     <tr>
-                                        <td style="border-width: 0px;">{{ $produs->nume }}</td>
-                                        <td style="border-width: 0px; text-align:right">{{ $produs->pret }}</td>
+                                        <td colspan="3"  style="border-width: 0px; text-align:center; ">
+                                            @if ($loop->first)
+                                                Până la {{ $produsePreturiPerData->first()->pana_la ? Carbon::parse($produsePreturiPerData->first()->pana_la)->isoFormat('DD.MM.YYYY') : '' }}
+                                            @elseif ($loop->last)
+                                                De la {{ $produsePreturiPerData->first()->de_la ? Carbon::parse($produsePreturiPerData->first()->de_la)->isoFormat('DD.MM.YYYY') : '' }}
+                                            @else
+                                                {{ $produsePreturiPerData->first()->de_la ? Carbon::parse($produsePreturiPerData->first()->de_la)->isoFormat('DD.MM.YYYY') : '' }}
+                                                -
+                                                {{ $produsePreturiPerData->first()->pana_la ? Carbon::parse($produsePreturiPerData->first()->pana_la)->isoFormat('DD.MM.YYYY') : '' }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                            @foreach ($produsePreturiPerData->sortBy('produs.nume') as $produsPret)
+                                @if ((($produsPret->produs->pret ?? '') !== '0.00')
+                                        // Produs$produse contains just the products that are in this raport, so we don't desplay all the products, just those necesary for CTSV Vrancea
+                                        // && (in_array($produsPret->produs_id, $produse->pluck('id')->toArray()))
+                                    )
+                                    <tr>
+                                        <td style="border-width: 0px;">{{ $produsPret->produs->nume ?? '' }}</td>
+                                        <td style="border-width: 0px; text-align:right">{{ $produsPret->pret }}</td>
                                         <td style="border-width: 0px;">lei/punga</td>
                                     </tr>
+
                                 @endif
                             @endforeach
-                        </table>
-                    </td>
-                    <td style="border-width: 0px;">
+                            </table>
+                        </td>
+                    @endforeach
+
+                        {{-- @foreach ($produse as $produs)
+                            @if ($produs->pret !== '0.00')
+                                <tr>
+                                    <td style="border-width: 0px;">{{ $produs->nume }}</td>
+                                    <td style="border-width: 0px; text-align:right">{{ $produs->pret }}</td>
+                                    <td style="border-width: 0px;">lei/punga</td>
+                                </tr>
+                            @endif
+                        @endforeach --}}
+
+                    <td style="border-width: 0px; text-align:center; width:30%">
                         ÎNTOCMIT,
                     </td>
                 </tr>
