@@ -214,13 +214,13 @@
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
                                 {{-- When it was just 1 price --}}
-                                {{-- {{ ($val = str_replace(',', '', number_format($recoltariSangeInitiale->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($recoltariSangeInitiale->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
                                 @php
                                     $total += $val;
-                                @endphp --}}
+                                @endphp
 
                                 {{-- When was added the posibility to calculate multiple prices --}}
-                                @php
+                                {{-- @php
                                     $val = 0;
                                 @endphp
                                 @foreach ($produs->preturi as $pret)
@@ -231,7 +231,7 @@
                                 @php
                                     $total += $val;
                                 @endphp
-                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }} --}}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -244,29 +244,25 @@
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
                                 {{-- When it was just 1 price --}}
-                                {{-- {{ $recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->count() }} - {{ $produs->pret }} -
+                                {{-- {{ $recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->count() }} - {{ $produs->pret }} - --}}
                                 {{ ($val = str_replace(',', '', number_format($recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
                                 @php
                                     $total += $val;
-                                @endphp --}}
+                                @endphp
 
                                 {{-- When was added the posibility to calculate multiple prices --}}
-                                @php
+                                {{-- @php
                                     $val = 0;
                                 @endphp
                                 @foreach ($produs->preturi as $pret)
                                     @php
                                         $val += $recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() * ($pret->pret ?? 0)
                                     @endphp
-                                    {{-- {{ $recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() }} - {{ $pret->pret }} - {{ $val }} --}}
-                                    {{-- <br><br> --}}
-                                    {{-- {{ $recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() }} - {{ $pret->pret }} -
-                                    {{ ($val = str_replace(',', '', number_format($recoltariSangeInterval->whereNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->whereBetween('data', [$pret->de_la, $pret->pana_la])->count() * ($pret->pret ?? 0), 2))) === "0.00" ? '' : $val }} --}}
                                 @endforeach
                                 @php
                                     $total += $val;
                                 @endphp
-                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }} --}}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -279,13 +275,13 @@
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
                                 {{-- When it was just 1 price --}}
-                                {{-- {{ ($val = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($recoltariSangeInterval->whereNotNull('intrare_id')->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
                                 @php
                                     $total += $val;
-                                @endphp --}}
+                                @endphp
 
                                 {{-- When was added the posibility to calculate multiple prices --}}
-                                @php
+                                {{-- @php
                                     $val = 0;
                                 @endphp
                                 @foreach ($produs->preturi as $pret)
@@ -296,7 +292,7 @@
                                 @php
                                     $total += $val;
                                 @endphp
-                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }} --}}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -309,13 +305,13 @@
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
                                 {{-- When it was just 1 price --}}
-                                {{-- {{ ($val = str_replace(',', '', number_format($recoltariSangeRebutate->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($recoltariSangeRebutate->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
                                 @php
                                     $total += $val;
-                                @endphp --}}
+                                @endphp
 
                                 {{-- When was added the posibility to calculate multiple prices --}}
-                                @php
+                                {{-- @php
                                     $val = 0;
                                 @endphp
                                 @foreach ($produs->preturi as $pret)
@@ -326,7 +322,7 @@
                                 @php
                                     $total += $val;
                                 @endphp
-                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }} --}}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -339,13 +335,13 @@
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
                                 {{-- When it was just 1 price --}}
-                                {{-- {{ ($val = str_replace(',', '', number_format($recoltariSangeLivrate->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($recoltariSangeLivrate->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
                                 @php
                                     $total += $val;
-                                @endphp --}}
+                                @endphp
 
                                 {{-- When was added the posibility to calculate multiple prices --}}
-                                @php
+                                {{-- @php
                                     $val = 0;
                                 @endphp
                                 @foreach ($produs->preturi as $pret)
@@ -356,7 +352,7 @@
                                 @php
                                     $total += $val;
                                 @endphp
-                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }} --}}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -369,13 +365,13 @@
                         @foreach ($produse as $produs)
                             <td colspan="2" style="text-align:right">
                                 {{-- When it was just 1 price --}}
-                                {{-- {{ ($val = str_replace(',', '', number_format($recoltariSangeStocFinal->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($recoltariSangeStocFinal->where('recoltari_sange_produs_id', $produs->id)->count() * ($produs->pret ?? 0), 2))) === "0.00" ? '' : $val }}
                                 @php
                                     $total += $val;
-                                @endphp --}}
+                                @endphp
 
                                 {{-- When was added the posibility to calculate multiple prices --}}
-                                @php
+                                {{-- @php
                                     $val = 0;
                                 @endphp
                                 @foreach ($produs->preturi as $pret)
@@ -386,7 +382,7 @@
                                 @php
                                     $total += $val;
                                 @endphp
-                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }}
+                                {{ ($val = str_replace(',', '', number_format($val, 2))) === "0.00" ? '' : $val }} --}}
                             </td>
                         @endforeach
                         <td style="text-align:right">{{ $total }}</td>
@@ -398,7 +394,7 @@
 
             <table>
                 <tr>
-                    @foreach ($produsePreturi->whereIn('produs_id', $produse->pluck('id')->toArray())->groupBy('de_la') as $produsePreturiPerData)
+                    {{-- @foreach ($produsePreturi->whereIn('produs_id', $produse->pluck('id')->toArray())->groupBy('de_la') as $produsePreturiPerData)
                         <td style="width:250px">
                             <table style="">
                                     <tr>
@@ -429,17 +425,22 @@
                             @endforeach
                             </table>
                         </td>
-                    @endforeach
+                    @endforeach --}}
 
-                        {{-- @foreach ($produse as $produs)
-                            @if ($produs->pret !== '0.00')
-                                <tr>
-                                    <td style="border-width: 0px;">{{ $produs->nume }}</td>
-                                    <td style="border-width: 0px; text-align:right">{{ $produs->pret }}</td>
-                                    <td style="border-width: 0px;">lei/punga</td>
-                                </tr>
-                            @endif
-                        @endforeach --}}
+
+                    <td style="border-width: 0px; width:250px">
+                        <table style="">
+                            @foreach ($produse as $produs)
+                                @if ($produs->pret !== '0.00')
+                                    <tr>
+                                        <td style="border-width: 0px;">{{ $produs->nume }}</td>
+                                        <td style="border-width: 0px; text-align:right">{{ $produs->pret }}</td>
+                                        <td style="border-width: 0px;">lei/punga</td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </table>
+                    </td>
 
                     <td style="border-width: 0px; text-align:center; width:30%">
                         ÎNTOCMIT,
