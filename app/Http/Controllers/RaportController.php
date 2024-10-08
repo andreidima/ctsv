@@ -301,7 +301,7 @@ class RaportController extends Controller
                     ->get();
                 $recoltariSangeRebutProcesareAspectChilos = RecoltareSange::
                     with('rebut', 'produs')
-                    ->whereNull('intrare_id')
+                    // ->whereNull('intrare_id')
                     ->when($interval, function ($query, $interval) {
                         return $query->whereBetween('data', [strtok($interval, ','), strtok( '' )]);
                     })
@@ -368,8 +368,8 @@ class RaportController extends Controller
                     ->get();
 
                 $rebuturi = RecoltareSange::
-                    whereNull('intrare_id')
-                    ->when($interval, function ($query, $interval) {
+                    // whereNull('intrare_id')
+                    when($interval, function ($query, $interval) {
                         return $query->whereBetween('rebut_data', [strtok($interval, ','), strtok( '' )]);
                     })
                     ->latest()

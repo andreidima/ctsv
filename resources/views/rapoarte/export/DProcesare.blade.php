@@ -413,6 +413,9 @@
                     </td>
                     <td style="text-align:center; border-bottom:dashed">
                         {{ $recoltariSangeRebutProcesareAspectChilos->whereIn('produs.nume', ['CER-SL'])->count() }}
+                        @foreach ($recoltariSangeRebutProcesareAspectChilos->whereIn('produs.nume', ['CER-SL']) as $recoltare)
+                            {{ $recoltare->data }} /
+                        @endforeach
                     </td>
                 </tr>
                 <tr>
@@ -556,7 +559,7 @@
                 <tr>
                     <td colspan="2">*5.3.1. număr unități CT echivalent CUT-DL</td>
                     <td style="text-align:center;">
-                        {{ $recoltariSangeFaraRebutRecoltare->whereIn('produs.nume', ['CUT'])->count() * 5 }}
+                        {{ $recoltariSangeFaraRebutRecoltare->whereIn('produs.nume', ['CUT'])->count() * 4 }}
                     </td>
                 </tr>
             </table>
