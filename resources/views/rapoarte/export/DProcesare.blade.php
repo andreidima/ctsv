@@ -413,9 +413,6 @@
                     </td>
                     <td style="text-align:center; border-bottom:dashed">
                         {{ $recoltariSangeRebutProcesareAspectChilos->whereIn('produs.nume', ['CER-SL'])->count() }}
-                        @foreach ($recoltariSangeRebutProcesareAspectChilos->whereIn('produs.nume', ['CER-SL']) as $recoltare)
-                            {{ $recoltare->data }} /
-                        @endforeach
                     </td>
                 </tr>
                 <tr>

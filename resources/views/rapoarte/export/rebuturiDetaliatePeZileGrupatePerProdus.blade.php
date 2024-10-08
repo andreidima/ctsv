@@ -240,9 +240,7 @@
                                         <b>Total</b>
                                     </td>
                                     @foreach ($rebuturi as $rebut)
-                                        <td style="text-align: center;">
-                                            <b>{{ $recoltariSange->where('recoltari_sange_rebut_id', $rebut->id)->count() }}</b>
-                                        </td>
+                                        <td style="text-align: center;"><b>{{ $recoltariSange->where('recoltari_sange_rebut_id', $rebut->id)->count() }}</b></td>
                                     @endforeach
                                     <td style="text-align: center;">
                                         <b>{{ $recoltariSange->count() }}</b>
