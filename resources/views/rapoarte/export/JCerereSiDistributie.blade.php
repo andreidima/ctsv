@@ -138,7 +138,8 @@
                         b. CE
                     </td>
                     <td style="text-align:center;">
-                        {{ $recoltariSangeDistribuite->whereIn('produs.nume', ['CER', 'CER-SL', 'CER-DL'])->count() }}
+                        {{-- {{ $recoltariSangeDistribuite->whereIn('produs.nume', ['CER', 'CER-SL', 'CER-DL'])->count() }} --}}
+                        {{ $cereri->whereIn('produs.nume', ['CER', 'CER-SL', 'CER-DL'])->sum('nr_pungi') + $recoltariSangeDeLaComenziFaraCereriAdaugate->whereIn('produs.nume', ['CER', 'CER-SL', 'CER-DL'])->count() }}
                     </td>
                 </tr>
 
