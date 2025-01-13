@@ -422,7 +422,7 @@ class RaportController extends Controller
                     })
                     ->get();
 
-                return view('rapoarte.export.JCerereSiDistributie', compact('cereri', 'recoltariSangeDeLaComenziFaraCereriAdaugate', 'recoltariSangeDistribuite', 'recoltariSangeDistribuiteInJudet', 'recoltariSangeDistribuiteCatreAlteCts', 'recoltariSangePrimite', 'interval'));
+                // return view('rapoarte.export.JCerereSiDistributie', compact('cereri', 'recoltariSangeDeLaComenziFaraCereriAdaugate', 'recoltariSangeDistribuite', 'recoltariSangeDistribuiteInJudet', 'recoltariSangeDistribuiteCatreAlteCts', 'recoltariSangePrimite', 'interval'));
                 $pdf = \PDF::loadView('rapoarte.export.JCerereSiDistributie', compact('cereri', 'recoltariSangeDeLaComenziFaraCereriAdaugate', 'recoltariSangeDistribuite', 'recoltariSangeDistribuiteInJudet', 'recoltariSangeDistribuiteCatreAlteCts', 'recoltariSangePrimite', 'interval'))
                     ->setPaper('a4', 'portrait');
                 $pdf->getDomPDF()->set_option("enable_php", true);
