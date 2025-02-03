@@ -108,12 +108,6 @@
                 </div>
             </div>
 
-            {{-- @foreach ($recoltariSange->sortBy('data') as $recoltare)
-                {{ $recoltare->data }}
-                <br>
-            @endforeach
-            {{ $recoltariSange->count() }} --}}
-
         </div>
     </div>
 

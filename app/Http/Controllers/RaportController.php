@@ -18,7 +18,7 @@ class RaportController extends Controller
     {
         // $request->session()->forget('raportReturnUrl');
         $interval = $request->interval;
-        $produse = RecoltareSangeProdus::all();
+        // $produse = RecoltareSangeProdus::all();
 
         switch ($request->input('action')) {
             case 'recoltariSangeCtsvToate':
@@ -62,7 +62,7 @@ class RaportController extends Controller
                     ->latest();
                 $recoltariSange = $query->get();
 
-                return view('rapoarte.export.recoltariSangeCtsvToateDetaliatPeZile', compact('recoltariSange', 'interval'));
+                // return view('rapoarte.export.recoltariSangeCtsvToateDetaliatPeZile', compact('recoltariSange', 'interval'));
                 $pdf = \PDF::loadView('rapoarte.export.recoltariSangeCtsvToateDetaliatPeZile', compact('recoltariSange', 'interval'))
                     ->setPaper('a4', 'landscape');
                 $pdf->getDomPDF()->set_option("enable_php", true);
@@ -465,15 +465,16 @@ class RaportController extends Controller
 
 
             default:
-                    $query = RecoltareSange::
-                        when($interval, function ($query, $interval) {
-                            return $query->whereBetween('data', [strtok($interval, ','), strtok( '' )]);
-                        })
-                        ->latest();
+                    // $query = RecoltareSange::
+                    //     when($interval, function ($query, $interval) {
+                    //         return $query->whereBetween('data', [strtok($interval, ','), strtok( '' )]);
+                    //     })
+                    //     ->latest();
 
-                    $recoltariSange = $query->get();
+                    // $recoltariSange = $query->get();
 
-                    return view('rapoarte.index', compact('recoltariSange', 'interval', 'produse'));
+                    // return view('rapoarte.index', compact('recoltariSange', 'interval', 'produse'));
+                    return view('rapoarte.index', compact('interval'));
                 break;
         }
     }
