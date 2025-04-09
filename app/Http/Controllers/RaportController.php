@@ -148,7 +148,7 @@ class RaportController extends Controller
 
                 $recoltariSangeGrupatePerCategorieProdus = $recoltariSange->groupBy('categorieProdus');
 
-                // return view('rapoarte.export.rebuturiDetaliatePeZile', compact('recoltariSange', 'rebuturi', 'interval'));
+                // return view('rapoarte.export.rebuturiDetaliatePeZileGrupatePerProdus', compact('recoltariSange', 'rebuturi', 'interval'));
                 $pdf = \PDF::loadView('rapoarte.export.rebuturiDetaliatePeZileGrupatePerProdus', compact('recoltariSangeGrupatePerCategorieProdus', 'rebuturi', 'interval'))
                     ->setPaper('a4', 'landscape');
                 $pdf->getDomPDF()->set_option("enable_php", true);
@@ -302,9 +302,15 @@ class RaportController extends Controller
                 $recoltariSangeRebutProcesareAspectChilos = RecoltareSange::
                     with('rebut', 'produs')
                     // ->whereNull('intrare_id')
+
+                    // 09.04.2025 - change - from extracting Recoltari based when the blood was collected, to when the blood bags were Rebutate
+                    // ->when($interval, function ($query, $interval) {
+                    //     return $query->whereBetween('data', [strtok($interval, ','), strtok( '' )]);
+                    // })
                     ->when($interval, function ($query, $interval) {
-                        return $query->whereBetween('data', [strtok($interval, ','), strtok( '' )]);
+                        return $query->whereBetween('rebut_data', [strtok($interval, ','), strtok( '' )]);
                     })
+
                     ->where('recoltari_sange_rebut_id', 3) // Rebuturi de procesare - Aspect chilos
                     ->latest()
                     ->get();
